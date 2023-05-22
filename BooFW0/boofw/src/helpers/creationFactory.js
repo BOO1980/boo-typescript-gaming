@@ -1,5 +1,7 @@
-import * as PIXI from "pixi.js"; //1
+//import * as PIXI from "pixi.js"; //1
 import Container from "../display/core/container"; //4
+import QuarteredBackground from "../display/core/quarteredBackground"; //5
+import Sprite from "../display/core/sprite"; //7
 import Screen from "../display/core/screen"; //12
 import ReelScreen from "../display/screens/reelScreen"; //16
 import Utils from "../utils/utils"; //42

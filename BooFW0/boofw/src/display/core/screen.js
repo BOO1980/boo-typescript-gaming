@@ -1,7 +1,8 @@
 import Container from "./container";
 
 export default class Screen extends Container {
-  constructor() {
+  constructor(data) {
+    super(data);
     console.log("Screens: constructor");
   }
 }

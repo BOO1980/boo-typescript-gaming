@@ -3,7 +3,7 @@ import CreationFactory from "./helpers/creationFactory";
 import Utils from "./utils/utils";
 
 export class Game {
-  constructor() {
+  constructor(initData) {
     console.log("FW: Game");
     if (Game.exists) {
       return Game.instance;
