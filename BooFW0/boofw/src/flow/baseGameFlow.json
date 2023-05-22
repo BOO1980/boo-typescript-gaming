@@ -1,0 +1,10 @@
+{
+  "minimumGameTimerAllowed": 500,
+  "autoPlayInterGameDelay": 250,
+  "screens": [],
+  "connection": null,
+  "gameUI": null,
+  "topBar": null,
+  "game": null,
+  "freeRoundsManager": null
+}

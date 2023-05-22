@@ -1,4 +1,6 @@
 import { configManager } from "./index";
+import CreationFactory from "./helpers/creationFactory";
+import Utils from "./utils/utils";
 
 export class Game {
   constructor() {
@@ -41,5 +43,9 @@ export class Game {
     );
 
     this.gameFlow = this.createNewGameFlow(flowInitData.type, flowInitData);
+  }
+
+  createNewGameFlow(type, initData) {
+    return CreationFactory.create(type, initData);
   }
 }
