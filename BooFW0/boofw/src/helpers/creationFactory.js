@@ -14,11 +14,11 @@ export default class CreationFactory {
   }
 
   static classesDirectory = {
-    Container,
-    QuarteredBackground,
-    Screen,
-    ReelScreen,
-    BaseGameFlow,
+    Container, //116
+    QuarteredBackground, //117
+    Screen, //119
+    ReelScreen, //123
+    BaseGameFlow, //150
   };
 
   static create(type, data) {

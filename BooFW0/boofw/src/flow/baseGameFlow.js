@@ -1,7 +1,9 @@
 import DEFAULTS from "./baseGameFlow.json";
+import { configManager } from "../index";
+import Utils from "../utils/utils";
 
 export default class BaseGameFlow {
-  constructor() {
+  constructor(initData) {
     console.log("BaseGameFlow: constructor");
     const defaultData = this.compileDefaults();
     //this.setupGameFlows();

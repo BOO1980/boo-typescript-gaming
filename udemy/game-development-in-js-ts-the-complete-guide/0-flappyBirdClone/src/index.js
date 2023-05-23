@@ -6,7 +6,7 @@ const config = {
   width: 800,
   height: 600,
   physics: {
-    // arcase physics plugin, manage physic similation
+    // arcade physics plugin, manage physic similation
     default: "arcade",
   },
   scene: {
@@ -16,8 +16,12 @@ const config = {
   },
 };
 
-function preload() {}
+function preload() {
+  debugger;
+}
 
-function create() {}
+function create() {
+  debugger;
+}
 //create an instance of the phaser game
 new Phaser.Game(config);

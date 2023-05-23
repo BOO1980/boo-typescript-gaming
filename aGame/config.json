@@ -1,0 +1,14 @@
+{
+  "game": {
+    "gameType": "slot",
+    "minFPS": 24,
+    "maxFPS": 60
+  },
+  "screens": {
+    "list": {
+      "gameScreen": {
+        "id": "reelScreen"
+      }
+    }
+  }
+}
