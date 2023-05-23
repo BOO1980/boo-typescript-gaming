@@ -15,6 +15,7 @@ export default class CreationFactory {
 
   static classesDirectory = {
     Container,
+    QuarteredBackground,
     Screen,
     ReelScreen,
     BaseGameFlow,

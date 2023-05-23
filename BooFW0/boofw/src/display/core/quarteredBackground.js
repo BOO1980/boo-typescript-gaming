@@ -8,5 +8,10 @@ export default class QuarteredBackground extends Container {
     }
     super(data);
     console.log("QuarteredBackground: constructor");
+
+    this.tl = new Sprite(data.tl);
+    this.tr = new Sprite(data.tr);
+    this.bl = new Sprite(data.bl);
+    this.br = new Sprite(data.br);
   }
 }

@@ -1,10 +1,10 @@
 export default class Game extends BooFW.Game {
-  constructor() {
-    super();
+  constructor(initData) {
+    super(initData);
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const game = new Game();
+  const game = new Game(GAME_INIT_DATA);
   game.init();
 });
