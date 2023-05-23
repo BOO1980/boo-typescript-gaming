@@ -1,3 +1,3 @@
-export default class EventsDictionary{
-    constructor{}
+export default class EventsDictionary {
+  constructor() {}
 }

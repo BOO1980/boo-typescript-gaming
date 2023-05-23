@@ -1,5 +1,3 @@
 export default class FreeRoundsMsgBox {
-  constructor{
-
-  }
+  constructor() {}
 }

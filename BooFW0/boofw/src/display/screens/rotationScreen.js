@@ -1,5 +1,3 @@
-export default class RotationScreen{
-    constructor{
-        
-    }
+export default class RotationScreen {
+  constructor() {}
 }

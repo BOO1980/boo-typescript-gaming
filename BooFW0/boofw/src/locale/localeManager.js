@@ -1,3 +1,3 @@
-export default class LocaleManager{
-    constructor{}
+export default class LocaleManager {
+  constructor() {}
 }

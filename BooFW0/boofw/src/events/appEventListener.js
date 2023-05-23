@@ -1,5 +1,3 @@
-export default class AppEventListener{
-    constructor{
-    }
-    
+export default class AppEventListener {
+  constructor() {}
 }
