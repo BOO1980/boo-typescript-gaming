@@ -83,66 +83,66 @@ module.exports = (env) => {
   // console.log(`UI To Include:${process.argv[4].substring(2)}`);
 
   // const uiName = process.argv[4].substring(2);
-  const imageSource = `honeypot/src/ui/${uiName}/images`;
-  const imageTarget = `ui/${uiName}/images`;
+  // const imageSource = `honeypot/src/ui/${uiName}/images`;
+  // const imageTarget = `ui/${uiName}/images`;
 
-  const soundSource = `honeypot/src/ui/${uiName}/sounds`;
-  const soundTarget = `ui/${uiName}/sounds`;
+  // const soundSource = `honeypot/src/ui/${uiName}/sounds`;
+  // const soundTarget = `ui/${uiName}/sounds`;
 
-  const fontSource = `honeypot/src/ui/${uiName}/fonts`;
-  const fontTarget = `ui/${uiName}/fonts`;
+  // const fontSource = `honeypot/src/ui/${uiName}/fonts`;
+  // const fontTarget = `ui/${uiName}/fonts`;
 
-  const uiConfigSource = `honeypot/src/ui/${uiName}/uiConfig.js`;
-  const uiConfigTarget = `ui/${uiName}/uiConfig.js`;
+  // const uiConfigSource = `honeypot/src/ui/${uiName}/uiConfig.js`;
+  // const uiConfigTarget = `ui/${uiName}/uiConfig.js`;
 
-  const localeConfigSource = "honeypot/src/locales";
-  const localeConfigTarget = "locales";
+  // const localeConfigSource = "honeypot/src/locales";
+  // const localeConfigTarget = "locales";
 
-  const base64Source = "honeypot/src/base64";
-  const base64Target = "base64";
+  // const base64Source = "honeypot/src/base64";
+  // const base64Target = "base64";
 
-  const copyStaticPlugin = new CopyWebpackPlugin([
-    {
-      from: imageSource,
-      to: imageTarget,
-      ignore: [".DS_Store", "*.bak"],
-      // context: '/',
-    },
-    {
-      from: soundSource,
-      to: soundTarget,
-      ignore: [".DS_Store", "*.bak"],
-      // context: '/',
-    },
-    {
-      from: fontSource,
-      to: fontTarget,
-      ignore: [".DS_Store", "*.bak"],
-      // context: '/',
-    },
-    {
-      from: uiConfigSource,
-      to: uiConfigTarget,
-      ignore: [".DS_Store", "*.bak"],
-      // context: '/',
-    },
-    {
-      from: localeConfigSource,
-      to: localeConfigTarget,
-      ignore: [".DS_Store", "*.bak"],
-      // context: '/',
-    },
-    {
-      from: base64Source,
-      to: base64Target,
-      ignore: [".DS_Store", "*.bak"],
-      // context: '/',
-    },
-  ]);
+  // const copyStaticPlugin = new CopyWebpackPlugin([
+  //   {
+  //     from: imageSource,
+  //     to: imageTarget,
+  //     ignore: [".DS_Store", "*.bak"],
+  //     // context: '/',
+  //   },
+  //   {
+  //     from: soundSource,
+  //     to: soundTarget,
+  //     ignore: [".DS_Store", "*.bak"],
+  //     // context: '/',
+  //   },
+  //   {
+  //     from: fontSource,
+  //     to: fontTarget,
+  //     ignore: [".DS_Store", "*.bak"],
+  //     // context: '/',
+  //   },
+  //   {
+  //     from: uiConfigSource,
+  //     to: uiConfigTarget,
+  //     ignore: [".DS_Store", "*.bak"],
+  //     // context: '/',
+  //   },
+  //   {
+  //     from: localeConfigSource,
+  //     to: localeConfigTarget,
+  //     ignore: [".DS_Store", "*.bak"],
+  //     // context: '/',
+  //   },
+  //   {
+  //     from: base64Source,
+  //     to: base64Target,
+  //     ignore: [".DS_Store", "*.bak"],
+  //     // context: '/',
+  //   },
+  // ]);
 
   return {
     resolve: {
-      modules: ["node_modules", path.resolve(__dirname, "honeypot/src")],
+      modules: ["node_modules", path.resolve(__dirname, "slotfw/src")],
     },
     mode: "production",
     stats: {
@@ -160,16 +160,16 @@ module.exports = (env) => {
       // logging: true,
     },
     devtool: "source-map",
-    entry: "./honeypot/src/index.js",
+    entry: "./slotfw/src/index.js",
     output: {
       // filename: 'game.js',
-      filename: "honeypot.js",
+      filename: "slotfw.js",
       // chunkFilename: "[name].bundle.js",
       path: path.resolve(__dirname, "dist"),
       // path: "D:\\Repos\\brightlightcity\\honeypot",
       // path: "D:\\Repos\\HoneyPotV2Split\\honeypot",
       libraryTarget: "umd",
-      library: "HoneyPot",
+      library: "SlotFW",
     },
     optimization: {
       minimizer: [
@@ -236,7 +236,7 @@ module.exports = (env) => {
     },
     plugins: [
       new CleanWebpackPlugin(),
-      copyStaticPlugin,
+      //copyStaticPlugin,
       providePlugin,
       // new BundleAnalyzerPlugin()
     ],
