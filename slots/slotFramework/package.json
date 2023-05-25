@@ -9,7 +9,9 @@
     "buildBoth": "webpack --mode production --config webpack.config.prod.js && uglifyjs ./dist/honeypot.js -c -m -o ./dist/honeypot.min.js"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.8",
     "babel-loader": "^8.1.0",
+    "@babel/preset-env": "^7.14.8",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "html-webpack-plugin": "^3.2.0",
