@@ -1,0 +1,8 @@
+{
+  "name": "slotframework",
+  "version": "0.0.0",
+  "description": "a simple slot framework",
+  "dependencies": {
+    "pixi.js": "5.3.10"
+  }
+}
