@@ -1,4 +1,4 @@
-export default class Game extends HoneyPot.Game {
+export default class Game extends SlotFW.Game {
   constructor(initData) {
     super(initData);
   }
@@ -19,9 +19,9 @@ export default class Game extends HoneyPot.Game {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  registerGameEvents() {
-    HoneyPot.AppEventListener.registerEvent("GAME_INTRO_PANEL_REMOVED");
-  }
+  // registerGameEvents() {
+  //   HoneyPot.AppEventListener.registerEvent("GAME_INTRO_PANEL_REMOVED");
+  // }
 
   async setupGraphicsDriver() {
     await super.setupGraphicsDriver();

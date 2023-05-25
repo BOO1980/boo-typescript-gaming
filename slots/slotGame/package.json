@@ -1,39 +1,59 @@
 {
-  "name": "slotGame",
+  "name": "boofw",
   "version": "0.0.0",
-  "description": "slotGame",
+  "description": "Boo Gaming framework V3",
   "main": "game.js",
   "scripts": {
-    "dev": "nodemon",
-    "start": "webpack-dev-server --host 0.0.0.0 --config webpack.config.dev.js",
+    "start": "webpack serve --config webpack.config.dev.js",
     "test": "webpack --mode development --config webpack.config.dev.js",
     "build": "webpack --mode production --config webpack.config.prod.js",
-    "buildWithTweaker": "webpack --mode production --config webpack.config.prod.js --tweaker=true",
-    "deploy": "cd ./deploy && node deploytoremoteSSH.js",
-    "deployLocal": "cd ./deploy && node deploytoserver.js",
-    "startIOS": "webpack-dev-server --host 0.0.0.0 --config webpack.config.dev.js --iosBuild=true",
-    "buildIOS": "webpack --mode production --config webpack.config.prod.js --iosBuild=true"
+    "lint": "eslint --fix main.js",
+    "format": "prettier -w .",
+    "babel": "babel script.js --presets airbnb",
+    "babelOutput": "babel script.js --presets airbnb --out-file script-compiled.js",
+    "buildBoth": "webpack --mode production --config webpack.config.prod.js && uglifyjs ./dist/honeypot.js -c -m -o ./dist/honeypot.min.js",
+    "release": "standard-version",
+    "releaseminor": "standard-version --release-as minor",
+    "releasepatch": "standard-version --release-as patch",
+    "releasemajor": "standard-version --release-as major",
+    "publish": "cd ./../honeypotv3release && npm start",
+    "publish-dev": "cd ./../honeypotv3release && npm run start-dev"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hungrybeargaming/slotGame.git"
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "standard-version": {
+    "skip": {
+      "changelog": false,
+      "commit": true,
+      "tag": true,
+      "bump": false
+    }
   },
   "author": "",
   "license": "ISC",
-  "homepage": "",
   "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "babel-loader": "^8.1.0",
-    "@babel/preset-env": "^7.14.8",
-    "html-webpack-plugin": "^3.2.0",
-    "file-loader": "^6.1.0",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.44.2",
-    "webpack-bundle-analyzer": "^4.2.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "copy-webpack-plugin": "^11.0.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "standard-version": "^9.5.0",
+    "webpack": "^5.75.0",
+    "webpack-bundle-analyzer": "^4.7.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "zip-webpack-plugin": "^4.0.1"
   },
   "dependencies": {
-    "zip-webpack-plugin": "^3.0.0"
+    "deepmerge": "4.2.2",
+    "gsap": "3.7.1",
+    "lil-gui": "0.17.0",
+    "pixi-filters": "3.2.2",
+    "pixi-projection": "0.3.15",
+    "pixi-spine": "2.0.5",
+    "pixi-stats": "1.0.7",
+    "pixi.js": "5.3.10",
+    "regenerator-runtime": "^0.13.11"
   }
 }
