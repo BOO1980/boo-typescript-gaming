@@ -2,6 +2,12 @@
   "name": "slotframework",
   "version": "0.0.0",
   "description": "a simple slot framework",
+  "scripts": {
+    "test": "webpack --mode development --config webpack.config.dev.js"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0"
+  },
   "dependencies": {
     "pixi.js": "5.3.10"
   }
