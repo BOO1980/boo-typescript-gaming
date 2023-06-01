@@ -11,7 +11,8 @@ const config = {
     arcade:{
       gravity: {
         y: 200
-      }
+      },
+      debug: true
     }
   },
   scene: {
@@ -21,6 +22,7 @@ const config = {
   }
 }
 
+const VELOCITY = 200;
 let bird = null;
 let totalDelta = null;
 
@@ -42,7 +44,7 @@ function create(){
   bird = this.physics.add.sprite(config.width * 0.1, config.height / 2, 'bird').setOrigin(0)
   console.log(bird.body);
   //bird.body.gravity.y = 200; //down 200 pixels per second (higher the number the much faster it will go)
-  bird.body.gravity.y = 200;
+  bird.body.velocity.x = VELOCITY;
 }
 
 
@@ -68,10 +70,16 @@ function update(time, delta){
   // }
   // totalDelta  += delta;
 
-  totalDelta += delta;
-  if (totalDelta < 1000) {return;}
-  console.log(bird.body.velocity.y);
-  totalDelta = 0;
+  // totalDelta += delta;
+  // if (totalDelta < 1000) {return;}
+  // console.log(bird.body.velocity.y);
+  // totalDelta = 0;
+
+  // if(bird.x >= config.width - bird.body.width){
+  //   bird.body.velocity.x = -200;
+  // }else if(bird.x <= 0){
+  //   bird.body.velocity.x = 200
+  // }
 }
 
 new Phaser.Game(config);
