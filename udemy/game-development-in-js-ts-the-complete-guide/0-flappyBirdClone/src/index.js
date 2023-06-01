@@ -5,13 +5,18 @@ const config = {
   width: 800,
   height: 600,
   // Arcade physics plugin, manages physics simulation
-  physics:{defaults:"arcade"},
+  physics: {
+    // Arcade physics plugin, manages physics simulation
+    default: 'arcade'
+  },
   scene: {
     preload: preload,
     create:create,
-    //update: update //will use later
+    update: update //is called every frame
   }
 }
+
+let bird = null
 
 //loading assets, such as images, music, animations
 function preload(){
@@ -23,13 +28,31 @@ function preload(){
 
 //initalising object, interactions etc
 function create(){
-
+  
   //this.add.image(x,y,'keyname');
   //this.add.image(config.width/2,config.height/2,'sky');
   this.add.image(0,0,'sky').setOrigin(0,0);
-  this.add.sprite(config.width/10, config.height/2,'bird').setOrigin(0,0)
+  //bird = this.add.sprite(config.width/10, config.height/2,'bird').setOrigin(0,0)
+  bird = this.physics.add.sprite(config.width * 0.1, config.height / 2, 'bird').setOrigin(0)
+  console.log(bird.body);
+  //bird.body.gravity.y = 200; //down 200 pixels per second (higher the number the much faster it will go)
+  bird.body.gravity.y = 200; 
+}
+
+// around 60fps
+// 60 timers be second this will be executed
+// delta time is from the last frame, delata is around 16ms
+// 60 * 16ms = roughly around 1000ms
+function update(time, delta){
+  // let num = 0
+  // console.log(`hello${num++}`)
+  console.log(bird.body.velocity.y)
 }
 
 
+
+
 new Phaser.Game(config);
+
+
 
