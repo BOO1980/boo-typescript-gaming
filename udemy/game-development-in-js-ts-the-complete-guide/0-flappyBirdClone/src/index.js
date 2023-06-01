@@ -7,16 +7,22 @@ const config = {
   // Arcade physics plugin, manages physics simulation
   physics: {
     // Arcade physics plugin, manages physics simulation
-    default: 'arcade'
+    default: 'arcade',
+    arcade:{
+      gravity: {
+        y: 200
+      }
+    }
   },
   scene: {
-    preload: preload,
-    create:create,
-    update: update //is called every frame
+  preload: preload,
+  create:create,
+  update: update //is called every frame
   }
 }
 
-let bird = null
+let bird = null;
+let totalDelta = null;
 
 //loading assets, such as images, music, animations
 function preload(){
@@ -36,8 +42,17 @@ function create(){
   bird = this.physics.add.sprite(config.width * 0.1, config.height / 2, 'bird').setOrigin(0)
   console.log(bird.body);
   //bird.body.gravity.y = 200; //down 200 pixels per second (higher the number the much faster it will go)
-  bird.body.gravity.y = 200; 
+  bird.body.gravity.y = 200;
 }
+
+
+//gravity
+// t0 = 0px/s
+// t1 = 200px/s
+// t2 = 400px/s
+// t3 = 600px/s ...
+
+
 
 // around 60fps
 // 60 timers be second this will be executed
@@ -46,11 +61,18 @@ function create(){
 function update(time, delta){
   // let num = 0
   // console.log(`hello${num++}`)
-  console.log(bird.body.velocity.y)
+
+  // if(totalDelta >= 1000){
+  //   console.log(bird.body.velocity.y);
+  //   totalDelta = 0;
+  // }
+  // totalDelta  += delta;
+
+  totalDelta += delta;
+  if (totalDelta < 1000) {return;}
+  console.log(bird.body.velocity.y);
+  totalDelta = 0;
 }
-
-
-
 
 new Phaser.Game(config);
 
