@@ -10,7 +10,7 @@ const config = {
     default: 'arcade',
     arcade:{
       gravity: {
-        y: 200
+        y: 400
       },
       debug: true
     }
@@ -24,6 +24,7 @@ const config = {
 
 const VELOCITY = 200;
 let bird = null;
+let flapVelocity = 250;
 let totalDelta = null;
 
 //loading assets, such as images, music, animations
@@ -42,9 +43,14 @@ function create(){
   this.add.image(0,0,'sky').setOrigin(0,0);
   //bird = this.add.sprite(config.width/10, config.height/2,'bird').setOrigin(0,0)
   bird = this.physics.add.sprite(config.width * 0.1, config.height / 2, 'bird').setOrigin(0)
+  
+  this.input.on('pointerdown', flap)
+  
+  this.input.keyboard.on('keydown-SPACE', flap)
+
   console.log(bird.body);
   //bird.body.gravity.y = 200; //down 200 pixels per second (higher the number the much faster it will go)
-  bird.body.velocity.x = VELOCITY;
+  //bird.body.velocity.x = VELOCITY;
 }
 
 
@@ -80,6 +86,11 @@ function update(time, delta){
   // }else if(bird.x <= 0){
   //   bird.body.velocity.x = 200
   // }
+}
+
+function flap(){
+ console.log("flap")
+ bird.body.velocity.y = -flapVelocity;
 }
 
 new Phaser.Game(config);
