@@ -9,9 +9,9 @@ const config = {
     // Arcade physics plugin, manages physics simulation
     default: 'arcade',
     arcade:{
-      gravity: {
-        y: 400
-      },
+      // gravity: {
+      //   y: 400
+      // },
       debug: true
     }
   },
@@ -24,8 +24,16 @@ const config = {
 
 const VELOCITY = 200;
 let bird = null;
-let flapVelocity = 250;
-let totalDelta = null;
+let pipe = null;
+let upperPipe = null;
+let lowerPipe = null;
+
+const pipeOpeningDistanceRange = [150,250];
+let pipeVerticalDistance = Phaser.Math.Between(...pipeOpeningDistanceRange) //random between this range
+
+const flapVelocity = 250;
+const initialBirdPosition = {x: config.width * 0.1, y: config.height/2}
+//let totalDelta = null;
 
 //loading assets, such as images, music, animations
 function preload(){
@@ -33,6 +41,7 @@ function preload(){
   //contains functions and properties we can use
   this.load.image('sky','assets/sky.png');
   this.load.image('bird','assets/bird.png');
+  this.load.image('pipe','assets/pipe.png');
 }
 
 //initalising object, interactions etc
@@ -42,8 +51,10 @@ function create(){
   //this.add.image(config.width/2,config.height/2,'sky');
   this.add.image(0,0,'sky').setOrigin(0,0);
   //bird = this.add.sprite(config.width/10, config.height/2,'bird').setOrigin(0,0)
-  bird = this.physics.add.sprite(config.width * 0.1, config.height / 2, 'bird').setOrigin(0)
-  
+  bird = this.physics.add.sprite(initialBirdPosition.x, initialBirdPosition.y,'bird').setOrigin(0)
+  bird.body.gravity.y = 400;
+  upperPipe = this.physics.add.sprite(400,100,'pipe').setOrigin(0,1);
+  lowerPipe = this.physics.add.sprite(400,upperPipe.y+pipeVerticalDistance,'pipe').setOrigin(0,0);
   this.input.on('pointerdown', flap)
   
   this.input.keyboard.on('keydown-SPACE', flap)
@@ -86,7 +97,18 @@ function update(time, delta){
   // }else if(bird.x <= 0){
   //   bird.body.velocity.x = 200
   // }
+
+  if(bird.y > config.height || bird.y-bird.height < 0 ){
+    restartBirdPosition();
+  }
 }
+
+function restartBirdPosition(){
+  bird.x = initialBirdPosition.x;
+  bird.y = initialBirdPosition.y;
+  bird.body.velocity.y = 0;
+}
+
 
 function flap(){
  console.log("flap")
