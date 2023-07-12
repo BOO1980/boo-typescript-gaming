@@ -15,7 +15,7 @@ class PlayScene extends Phaser.Scene{
         this.pipeVerticalDistanceRange = [150, 250];
         this.pipeHorizontalDistanceRange = [500,550];
 
-        this.flapVelocity = 250;
+        this.flapVelocity = 300;
         
     };
 
@@ -46,7 +46,7 @@ class PlayScene extends Phaser.Scene{
         this.bird = this.physics.add
             .sprite(this.config.startPosition.x, this.config.startPosition.y, "bird")
             .setOrigin(0);
-        this.bird.body.gravity.y = 400;
+        this.bird.body.gravity.y = 600;
         this.bird.setCollideWorldBounds(true);
     }
 
@@ -123,12 +123,16 @@ class PlayScene extends Phaser.Scene{
 }
 
     gameOver() {
-        // this.bird.x = this.config.startPosition.x;
-        // this.bird.y =  this.config.startPosition.y;
-        // this.bird.body.velocity.y = 0;
-
         this.physics.pause(); //stops the game
         this.bird.setTint(0xEE4824);
+        
+        this.time.addEvent({
+            delay:1000,
+            callback: ()=>{
+                this.scene.restart();
+            },
+            loop:false //we dont want this to loop every 1 second
+        });
     }
 
     flap() {
